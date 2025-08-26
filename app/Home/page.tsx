@@ -1,3 +1,5 @@
+"use client";
+
 // HomePage.jsx
 import React from "react";
 

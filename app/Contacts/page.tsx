@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button"
+"use client";
 
+import { Button } from "@/components/ui/button";
 
 export default function ContactsPage() {
   return (
@@ -8,7 +9,9 @@ export default function ContactsPage() {
       className="overflow-y-auto scroll-smooth bg-black min-h-screen w-full py-10"
     >
       <div className="container px-6 md:px-20">
-        <h3 className="text-2xl text-center font-semibold mb-4 mt-6">Contact Information</h3>
+        <h3 className="text-2xl text-center font-semibold mb-4 mt-6">
+          Contact Information
+        </h3>
         <div className="max-w-3xl mx-auto space-y-6">
           <form className="space-y-4">
             <div className="">
@@ -55,7 +58,10 @@ export default function ContactsPage() {
                 placeholder="Your message"
               />
             </div>
-            <Button type="submit" className="w-full bg-pink-600 hover:bg-pink-700">
+            <Button
+              type="submit"
+              className="w-full bg-pink-600 hover:bg-pink-700"
+            >
               Send Message
             </Button>
           </form>

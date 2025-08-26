@@ -1,3 +1,5 @@
+"use client";
+
 import ProjectCard2 from "@/components/project-card 2";
 import ProjectCard from "@/components/project-card copy";
 

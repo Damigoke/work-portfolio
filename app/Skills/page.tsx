@@ -1,7 +1,7 @@
+"use client";
+
 import SkillBar from "@/components/skill-bar";
 import { Card, CardContent } from "@/components/ui/card";
-
- 
 
 export default function SkillsPage() {
   return (
