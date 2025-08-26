@@ -26,7 +26,7 @@ export default function HomesPage({ setActive }: HomesPageProps) {
         <div className="flex justify-center -mt-4 sm:-mt-4 border-b border-pink-700 pb-6 sm:pb-8 overflow-x-auto">
           {images.map((src, i) => (
             <div
-              key={i}
+              key={`${i}-${src}`}
               className="relative w-1/2 sm:w-[340px] lg:w-[420px] aspect-[3/5] overflow-hidden shadow-2xl flex-shrink-0"
             >
               <img
