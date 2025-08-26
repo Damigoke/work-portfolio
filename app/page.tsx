@@ -32,11 +32,47 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Sidebar */}
-        <aside
-          className={`fixed top-0 left-0 h-screen w-64 bg-black border-r border-gray-700 transform transition-transform duration-300 
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
-        >
+        {/* Mobile Sidebar + Backdrop */}
+        {/* Sidebar + Backdrop */}
+{isOpen && (
+  <div className="fixed inset-0 z-40 md:hidden flex items-start justify-start">
+    {/* Backdrop */}
+    <div
+      className="absolute inset-0 bg-black bg-opacity-50"
+      onClick={() => setIsOpen(false)}
+    ></div>
+
+    {/* Sidebar (smaller height, still overlayed) */}
+    <aside
+      className={`relative top-0 left-0 w-64 h-screen bg-black border-r border-gray-700 transform transition-transform duration-300 
+      ${isOpen ? "translate-x-0" : "-translate-x-full"} z-50`}
+    >
+      <h1 className="text-3xl font-bold mt-10 text-center">Cee's Corner</h1>
+      <nav className="flex flex-col space-y-6 text-lg mt-4 ml-10">
+        {navItems.map((item) => (
+          <a
+            key={item.id}
+            href={item.path}
+            onClick={(e) => {
+              e.preventDefault();
+              setActive(item.id);
+              setIsOpen(false);
+            }}
+            className={`transition-colors hover:text-pink-500 ${
+              active === item.id ? "text-pink-500 font-semibold" : ""
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+        </aside>
+      </div>
+      )}
+
+
+        {/* Sidebar (Desktop only, always visible) */}
+        <aside className="hidden md:fixed md:top-0 md:left-0 md:h-screen md:w-64 md:bg-black md:border-r md:border-gray-700 md:flex md:flex-col">
           <h1 className="text-3xl font-bold mt-[4.25rem] text-center">
             Cee's Corner
           </h1>
@@ -48,7 +84,6 @@ export default function Home() {
                 onClick={(e) => {
                   e.preventDefault();
                   setActive(item.id);
-                  setIsOpen(false); // close sidebar on mobile after click
                 }}
                 className={`transition-colors hover:text-pink-500 ${
                   active === item.id ? "text-pink-500 font-semibold" : ""
