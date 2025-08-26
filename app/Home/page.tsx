@@ -27,7 +27,7 @@ export default function HomesPage({ setActive }: HomesPageProps) {
           {images.map((src, i) => (
             <div
               key={i}
-              className="relative w-[80%] sm:w-[340px] lg:w-[420px] aspect-[3/5] overflow-hidden shadow-2xl flex-shrink-0"
+              className="relative w-1/2 sm:w-[340px] lg:w-[420px] aspect-[3/5] overflow-hidden shadow-2xl flex-shrink-0"
             >
               <img
                 src={src}
