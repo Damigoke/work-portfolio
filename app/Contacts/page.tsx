@@ -9,7 +9,7 @@ export default function ContactsPage() {
       className="overflow-y-auto scroll-smooth bg-black min-h-screen w-full py-10"
     >
       <div className="container px-6 md:px-20">
-        <h3 className="text-2xl text-center font-semibold mb-4 mt-6">
+        <h3 className="text-2xl text-white text-center font-semibold mb-4 mt-6">
           Contact Information
         </h3>
         <div className="max-w-3xl mx-auto space-y-6">
