@@ -16,7 +16,8 @@ interface ProjectCardProps {
   repoUrl?: string;
   audioUrl?: string;
   readMoreUrl?: string;
-  videoUrl?: string
+  videoUrl?: string;
+  linkLabel?: string;
 }
 
 export default function ProjectCard({
@@ -29,6 +30,7 @@ export default function ProjectCard({
   audioUrl,
   readMoreUrl,
   videoUrl,
+  linkLabel
 }: ProjectCardProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -76,7 +78,7 @@ export default function ProjectCard({
                 rel="noopener noreferrer"
                 className="text-sm text-blue-600 hover:underline"
               >
-                Read more
+                {linkLabel || "Read More"}
               </Link>
             </Button>
           )}

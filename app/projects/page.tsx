@@ -14,8 +14,8 @@ export default function ProjectsPage() {
         <div className="mb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center max-w-[1200px] w-full mb-20 mx-auto px-4 pt-10">
             <ProjectCard
-              title="TV Presenter & Show Anchor"
-              description="As a Broadcast Reporter at ARISE News, I am responsible for researching, writing, and presenting news stories across both television and digital platforms..."
+              title="TV Presenter & Show Anchor at Upgrade TV"
+              description="As a TV Presenter & Show Anchor at Upgrade TV, I engage audiences with insightful conversations, thought-provoking content, and a dynamic on-screen presence. I bring clarity, confidence, and warmth to every broadcast, ensuring stories are delivered with impact and authenticity."
               tags={[
                 "#NewsReporter",
                 "#TVJournalist",
@@ -27,6 +27,7 @@ export default function ProjectsPage() {
               repoUrl="#"
               audioUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
               readMoreUrl="https://www.arise.tv/author/chioma-kalu/"
+              linkLabel="View Shows"
             />
             <ProjectCard
               title="ARISE News Broadcast Reporter"
@@ -55,7 +56,7 @@ export default function ProjectsPage() {
             />
             <ProjectCard
               title="Events Compere/MC"
-              description="As a Broadcast Reporter at ARISE News, I am responsible for researching, writing, and presenting news stories across both television and digital platforms..."
+              description="As an Event Compere/MC, I bring energy, professionalism, and charisma to every stage, ensuring events run seamlessly while keeping audiences engaged and entertained. With a natural ability to connect with diverse crowds, I create memorable experiences for corporate functions, conferences, weddings, and social gatherings."
               tags={[
                 "#NewsReporter",
                 "#TVJournalist",
@@ -67,6 +68,7 @@ export default function ProjectsPage() {
               repoUrl="#"
               audioUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
               readMoreUrl="https://www.arise.tv/author/chioma-kalu/"
+              linkLabel="View Events"
             />
           </div>
         </div>

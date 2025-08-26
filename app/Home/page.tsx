@@ -42,27 +42,33 @@ export default function HomesPage({ setActive }: HomesPageProps) {
           </h1>
           <div className="text-lg text-gray-200 leading-relaxed pl-6 font-sans font-regular">
             <p className="mb-4">
-              I'm Chioma Kalu, a journalist and digital reporter working with
-              ARISE News, one of Nigeria’s leading news organizations. My work
-              spans a diverse range of topics, including politics, climate,
-              business, and global affairs.
+              Chioma Kalu is a journalist and digital reporter with several
+              years of experience covering politics, climate change, business,
+              and global affairs. She has reported on pressing national issues
+              such as land title revocations in Abuja and political dynamics
+              involving figures like Nyesom Wike and President Bola Tinubu,
+              while also providing in-depth coverage of international
+              developments in energy policy and global security. Her work is
+              defined by accuracy, depth, and a commitment to delivering stories
+              that resonate with diverse audiences.
             </p>
             <p className="mb-4">
-              I’ve reported on key national issues such as land title
-              revocations in Abuja, political dynamics involving figures like
-              Nyesom Wike and President Bola Tinubu, as well as international
-              developments in energy policy and global security.
+              In addition to her reporting, Chioma is a skilled voice-over
+              artist and writer who brings creativity, clarity, and a compelling
+              narrative style to every project. Whether through investigative
+              journalism, storytelling, or media production, she combines
+              analytical rigor with creativity to craft impactful content that
+              informs and engages. She holds a degree from the University of
+              Port Harcourt and has earned a reputation for producing work that
+              sparks meaningful conversations and promotes accountability.
             </p>
             <p className="mb-4">
-              In addition to my journalism career, I'm also a voice-over artist
-              and writer. I hold a degree from the University of Port Harcourt
-              and bring a thoughtful, creative approach to every project I
-              undertake.
-            </p>
-            <p className="mb-4">
-              Beyond my professional work, I'm active on social media, where I
-              share insights into my reporting, daily life, and connect with a
-              broader audience.
+              Beyond her professional achievements, Chioma is active on social
+              media, where she shares insights from her reporting, her creative
+              projects, and moments from her daily life. She values truth,
+              accountability, and amplifying diverse voices, using her platform
+              to connect with a wide audience and foster dialogue on issues that
+              matter
             </p>
           </div>
           <div className="mt-10 flex space-x-4 pl-6 justify-center">
@@ -73,7 +79,7 @@ export default function HomesPage({ setActive }: HomesPageProps) {
               Experience
             </button>
             <button
-             onClick={() => setActive("skills")}
+              onClick={() => setActive("skills")}
               className="px-6 py-3 bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition"
             >
               Skills
