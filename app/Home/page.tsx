@@ -45,7 +45,7 @@ export default function HomesPage({ setActive }: HomesPageProps) {
           </h1>
           <div className="text-base sm:text-lg text-gray-200 leading-relaxed px-4 sm:pl-6 font-sans">
             <p className="mb-4">
-              Chioma Kalu is a journalist and digital reporter with several
+              Chioma Kalu is a Broadcast journalist and digital reporter with several
               years of experience covering politics, climate change, business,
               and global affairs. She has reported on pressing national issues
               such as land title revocations in Abuja and political dynamics
