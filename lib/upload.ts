@@ -12,15 +12,15 @@ export async function saveUploadedFile(file: File) {
 
   // Decide where to save file based on environment
   const uploadDir = isRender
-    ? "/var/data/uploads" // Render persistent disk
-    : path.join(process.cwd(), "public", "uploads"); // Local dev
+    ? "/var/data/uploads" 
+    : path.join(process.cwd(), "public", "uploads");
 
   const filePath = path.join(uploadDir, file.name);
 
   await fs.writeFile(filePath, buffer);
 
   return {
-    filePath, // absolute path on server
-    relativePath: `/uploads/${file.name}`, // public URL for UI
+    filePath, 
+    relativePath: `/uploads/${file.name}`, 
   };
 }
