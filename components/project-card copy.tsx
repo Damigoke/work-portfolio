@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface ProjectCardProps {
   title: string;
@@ -20,18 +21,29 @@ interface ProjectCardProps {
   linkLabel?: string;
 }
 
-export default function ProjectCard({
-  title,
-  description,
-  tags,
-  imageUrl,
-  demoUrl,
-  repoUrl,
-  audioUrl,
-  readMoreUrl,
-  videoUrl,
-  linkLabel
-}: ProjectCardProps) {
+interface linkPageProps {
+  setActive?: (value: string) => void;
+}
+
+type CombinedProjectCardProps = ProjectCardProps & linkPageProps;
+
+export default function ProjectCard(
+  {
+    title,
+    description,
+    tags,
+    imageUrl,
+    demoUrl,
+    repoUrl,
+    audioUrl,
+    readMoreUrl,
+    videoUrl,
+    linkLabel,
+    setActive,
+  }: CombinedProjectCardProps
+
+) {
+  const router = useRouter();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -70,18 +82,30 @@ export default function ProjectCard({
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
         <p className="text-muted-foreground">
           {description}
-          {readMoreUrl && (
-            <Button variant="link" size="sm" asChild>
-              <Link
-                href={readMoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-blue-600 hover:underline"
+          {readMoreUrl &&
+            (readMoreUrl.startsWith("https") ? (
+              // 🌍 external link
+              <Button variant="link" size="sm" asChild>
+                <a
+                  href={readMoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-blue-600 hover:underline"
+                >
+                  {linkLabel || "Read More"}
+                </a>
+              </Button>
+            ) : (
+              // 📂 internal "link" → stays in portfolio, triggers nav
+              <Button
+                variant="link"
+                size="sm"
+                onClick={() => setActive && setActive("/uploads/view")}
+                className="text-sm text-blue-600 hover:underline text-left"
               >
                 {linkLabel || "Read More"}
-              </Link>
-            </Button>
-          )}
+              </Button>
+            ))}
         </p>
       </CardContent>
       <CardFooter className="flex justify-between border-t p-4">

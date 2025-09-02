@@ -10,14 +10,14 @@ const images = [
 ];
 
 interface HomesPageProps {
-  setActive: (value: string) => void;
+  setActive?: (value: string) => void;
 }
 
 export default function HomesPage({ setActive }: HomesPageProps) {
   return (
-    <>
+    <div className="flex-1 bg-black overflow-y-auto scroll-smooth">
       {/* Home Section */}
-      <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-center px-4 sm:px-6 py-6 sm:py-8 mt-4 sm:mt-6 mb-4 tracking-wide">
+      <h1 className="text-3xl text-white sm:text-5xl lg:text-6xl font-extrabold text-center px-4 sm:px-6 py-6 sm:py-8 mt-4 sm:mt-6 mb-4 tracking-wide">
         Chioma Kalu
       </h1>
 
@@ -45,13 +45,13 @@ export default function HomesPage({ setActive }: HomesPageProps) {
           </h1>
           <div className="text-base sm:text-lg text-gray-200 leading-relaxed px-4 sm:pl-6 font-sans">
             <p className="mb-4">
-              Chioma Kalu is a Broadcast journalist and digital reporter with several
-              years of experience covering politics, climate change, business,
-              and global affairs. She has reported on pressing national issues
-              such as land title revocations in Abuja and political dynamics
-              involving figures like Nyesom Wike and President Bola Tinubu,
-              while also providing in-depth coverage of international
-              developments in energy policy and global security.
+              Chioma Kalu is a Broadcast journalist and digital reporter with
+              several years of experience covering politics, climate change,
+              business, and global affairs. She has reported on pressing
+              national issues such as land title revocations in Abuja and
+              political dynamics involving figures like Nyesom Wike and
+              President Bola Tinubu, while also providing in-depth coverage of
+              international developments in energy policy and global security.
             </p>
             <p className="mb-4">
               In addition to her reporting, Chioma is a skilled voice-over
@@ -72,13 +72,13 @@ export default function HomesPage({ setActive }: HomesPageProps) {
           {/* Buttons */}
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 px-4 sm:pl-6 justify-center sm:justify-center">
             <button
-              onClick={() => setActive("projects")}
+              onClick={() => setActive && setActive("projects")}
               className="px-5 sm:px-6 py-3 bg-pink-700 text-white font-semibold rounded-lg shadow-lg hover:bg-pink-800 transition"
             >
               Experience
             </button>
             <button
-              onClick={() => setActive("skills")}
+              onClick={() => setActive && setActive("skills")}
               className="px-5 sm:px-6 py-3 bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition"
             >
               Skills
@@ -138,6 +138,6 @@ export default function HomesPage({ setActive }: HomesPageProps) {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -6,76 +6,50 @@ import ProjectsPage from "./projects/page";
 import SkillsPage from "./Skills/page";
 import ContactsPage from "./Contacts/page";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import GetUploadsPage from "./uploads/view/page";
+import LoginPage from "./login/page";
+import UploadPage from "./uploads/page";
+import cookie from "cookie";
 
 export default function Home() {
+  const router = useRouter();
+
   const navItems = [
     { id: "home", label: "Home", path: "/Home" },
     { id: "projects", label: "Work Experience", path: "/projects" },
     { id: "skills", label: "Skills", path: "/Skills" },
+    { id: "getUploads", label: "Broadcasts", path: "/uploads/view" },
     { id: "contacts", label: "Contact", path: "/Contacts" },
   ];
 
   const [active, setActive] = useState(navItems[0].id);
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleAdminClick = async () => {
+    const res = await fetch("/api/uploads");
+    const { valid } = await res.json();
+
+    if (valid) {
+      setActive("uploads");
+      setIsOpen(false);
+    } else {
+      setActive("login");
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <div className="flex h-screen bg-black text-white">
+    <div className="flex h-screen text-white">
       <>
-        {/* Hamburger for Mobile */}
-        <div className="fixed top-4 left-4 z-50 md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex flex-col space-y-1.5 p-2 bg-black rounded-md border border-gray-700"
-          >
-            <span className="block w-6 h-0.5 bg-white"></span>
-            <span className="block w-6 h-0.5 bg-white"></span>
-            <span className="block w-6 h-0.5 bg-white"></span>
-          </button>
-        </div>
 
-        {/* Mobile Sidebar + Backdrop */}
-        {isOpen && (
-          <div className="fixed inset-0 z-40 md:hidden flex items-start justify-start">
-            {/* Backdrop */}
-            <div
-              className="absolute inset-0 bg-black bg-opacity-50"
-              onClick={() => setIsOpen(false)}
-            ></div>
-
-            {/* Sidebar */}
-            <aside
-              className={`relative top-0 left-0 w-64 h-screen bg-black border-r border-gray-700 transform transition-transform duration-300 
-      ${isOpen ? "translate-x-0" : "-translate-x-full"} z-50`}
-            >
-              <h1 className="text-3xl font-bold mt-10 text-center">
-                Cee's Corner
-              </h1>
-              <nav className="flex flex-col space-y-6 text-lg mt-4 ml-10">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.id}
-                    href={item.path} // <-- works with Next.js routes
-                    onClick={() => {
-                      setActive(item.id);
-                      setIsOpen(false);
-                    }}
-                    className={`transition-colors hover:text-pink-500 ${
-                      active === item.id ? "text-pink-500 font-semibold" : ""
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-            </aside>
-          </div>
-        )}
 
         {/* Sidebar (Desktop only, always visible) */}
         <aside className="hidden md:fixed md:top-0 md:left-0 md:h-screen md:w-64 md:bg-black md:border-r md:border-gray-700 md:flex md:flex-col">
           <h1 className="text-3xl font-bold mt-[4.25rem] text-center">
             Cee's Corner
           </h1>
+
           <nav className="flex flex-col space-y-6 text-lg mt-4 ml-10">
             {navItems.map((item) => (
               <a
@@ -93,17 +67,34 @@ export default function Home() {
               </a>
             ))}
           </nav>
+
+          {/* Admin button */}
+          <div className="mt-auto mb-8 ml-10">
+            <button
+              onClick={() => router.push("/login")}
+              className="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
+            >
+              Admin
+            </button>
+          </div>
         </aside>
 
         {/* Main Content */}
         <main
-          className={`flex-1 overflow-y-auto scroll-smooth transition-all duration-300 
+          className={`flex-1 bg-black overflow-y-auto scroll-smooth transition-all duration-300 
           ${isOpen ? "ml-64" : "ml-0"} md:ml-64`}
         >
           {active === "home" && <HomesPage setActive={setActive} />}
-          {active === "projects" && <ProjectsPage />}
+          {active === "projects" && <ProjectsPage setActive={setActive} />}
           {active === "skills" && <SkillsPage />}
           {active === "contacts" && <ContactsPage />}
+          {active === "login" && (
+            <LoginPage setIsOpen={setIsOpen} setActive={setActive} />
+          )}
+          {active === "uploads" && (
+            <UploadPage setIsOpen={setIsOpen} setActive={setActive} />
+          )}
+          {active === "getUploads" && <GetUploadsPage setActive={setActive} />}
         </main>
       </>
     </div>
