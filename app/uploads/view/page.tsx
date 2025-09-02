@@ -69,6 +69,7 @@ export default function GetUploadsPage({ setActive }: HomesPageProps) {
                   width={200}
                   height={200}
                   className="w-[200px] rounded-lg shadow-md object-cover block transition-transform hover:scale-105"
+                  priority={true}
                 />
 
                 <p className="mt-6 text-center text-sm break-words whitespace-normal max-w-[300px]">
