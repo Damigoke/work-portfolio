@@ -4,6 +4,7 @@ import path from "path";
 import prisma from "@/lib/prisma"; // make sure you have this helper
 import * as jose from "jose";
 import { uploadSchema } from "@/lib/utils";
+import { saveUploadedFile } from "@/lib/upload";
 
 // ✅ verify JWT from cookies
 async function verifyToken(req: Request) {
@@ -45,19 +46,15 @@ export async function POST(req: Request) {
             return NextResponse.json({ message: "Only images allowed" }, { status: 400 });
         }
 
-        // ✅ Save file to /public/uploads
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-
-        const filePath = path.join(process.cwd(), "public", "uploads", file.name);
-        await writeFile(filePath, buffer);
+        // ✅ Save file (works both local + Render)
+        const { filePath, relativePath } = await saveUploadedFile(file);
 
         // ✅ Save in DB
         const upload = await prisma.mediaUpload.create({
             data: {
                 filename,
                 redirect_url: redirect_url,
-                fileurl: `/uploads/${file.name}`, // stored in public/uploads
+                fileurl: relativePath,
             },
         });
 

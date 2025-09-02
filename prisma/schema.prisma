@@ -6,15 +6,15 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 
 model MediaUpload {
-  id        Int      @id @default(autoincrement())
-  filename  String
-  fileurl   String   // where the file is stored, e.g. /uploads/file.png
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  filename     String
+  fileurl      String   // where the file is stored, e.g. /uploads/file.png
   redirect_url String
-  createdAt DateTime @default(now())
+  createdAt    DateTime @default(now())
 }
