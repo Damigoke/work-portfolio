@@ -47,14 +47,14 @@ export async function POST(req: Request) {
         }
 
         // ✅ Save file (works both local + Render)
-        const { filePath, relativePath } = await saveUploadedFile(file);
+        const uploaded = await saveUploadedFile(file);
 
         // ✅ Save in DB
         const upload = await prisma.mediaUpload.create({
             data: {
                 filename,
                 redirect_url: redirect_url,
-                fileurl: relativePath,
+                fileurl: uploaded.url,
             },
         });
 
